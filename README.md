@@ -139,4 +139,7 @@ netstat -r
 **Check Users**\
 net users
 
+**Drives on the machine**\
+wmic logicaldisk get Caption,Description,providername
+
 
