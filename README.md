@@ -124,7 +124,7 @@ exploit/windows/local/bypassuac\
 set session
 
 **After PrivEsc**\
-migrate <pid>\
+migrate \<pid\>\
 hashdump
   
 ## Windows Command Line
