@@ -131,7 +131,7 @@ hashdump
 **To search for a file starting from current directory**\
 dir /b/s "\*.conf\*"\
 dir /b/s "\*.txt\*"\
-dir /b/s "\*filename*\*"
+dir /b/s "\*filename\*"
 
 **Check routing table**\
 route print\
