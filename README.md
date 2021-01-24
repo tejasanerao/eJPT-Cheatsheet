@@ -8,7 +8,7 @@ nmap -A -p- -iL targets -oN nmap.aggressive -v\
 nmap -p<port> --script=vuln -v <target-IP>
 
 ## fPing
-fping -a -g 10.10.10.0/24 > targets 2>/dev/null
+fping -a -g 10.10.10.0/24 2>/dev/null > targets
 
 ## IP Route
 **Syntax**\
