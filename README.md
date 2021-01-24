@@ -3,8 +3,8 @@ This is a Cheatsheet for eJPT exam + course.
 
 ## Nmap
 nmap -sn 10.10.10.0/24\
-nmap -sV -p- -iL targets -oN nmap.initial\
-nmap -A -p- -iL targets -oN nmap.aggressive\
+nmap -sV -p- -iL targets -oN nmap.initial -v\
+nmap -A -p- -iL targets -oN nmap.aggressive -v\
 nmap -p<port> --script=vuln -v <target-IP>
 
 ## fPing
@@ -14,10 +14,10 @@ fping -a -g 10.10.10.0/24 > targets 2>/dev/null
 **Syntax**\
 ip route add \<Network-range\> via \<router-IP\> dev \<interface\>\
 eg.\
-ip route add 172.16.50.0/24 via 10.13.37.1 dev tap0
+ip route add 10.10.10.0/24 via 10.10.11.1 dev tap0
 
 ## John
-john --wordlist=/root/Tools/wordlists/rockyou.txt --format=raw-md5\
+john --wordlist=/usr/share/wordlists/rockyou.txt --format=raw-md5\
 unshadow passwd shadow > unshadowed.txt\
 john --wordlist=/usr/share/wordlists/rockyou.txt unshadowed.txt
 
