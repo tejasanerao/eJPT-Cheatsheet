@@ -30,7 +30,7 @@ dirb http://10.10.10.10/dir -u admin:admin
 nc -nvlp 1234
 
 **Banner Grabbing**\
-nc -nv 10.10.10.10 <port>
+nc -nv 10.10.10.10 \<port\>
 
 ## SQLMap
 #### Check if injection exists
