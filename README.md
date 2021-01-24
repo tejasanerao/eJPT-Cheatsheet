@@ -1,25 +1,25 @@
 # eJPT-Cheatsheet-Tips
-This is a Cheatsheet for eJPT exam.\
+This is a Cheatsheet for eJPT exam.
 
 ### Nmap
 nmap -sn 10.10.10.0/24\
 nmap -sV -p- -iL targets -oN nmap.initial\
 nmap -A -p- -iL targets -oN nmap.aggressive\
-nmap -p<port> --script=vuln -v <target-IP>\
+nmap -p<port> --script=vuln -v <target-IP>
 
 ### fPing
-fping -a -g 10.10.10.0/24 > targets 2>/dev/null\
+fping -a -g 10.10.10.0/24 > targets 2>/dev/null
 
 ### IP Route
 **Syntax**\
-*ip route add "Network-range" via "router-IP" dev <interface>*\
+*ip route add \<Network-range\> via \<router-IP\> dev \<interface\>\
 eg.\
-ip route add 172.16.50.0/24 via 10.13.37.1 dev tap0\
+ip route add 172.16.50.0/24 via 10.13.37.1 dev tap0
 
 ### John
 john --wordlist=/root/Tools/wordlists/rockyou.txt --format=raw-md5\
 unshadow passwd shadow > unshadowed.txt\
-john --wordlist=/usr/share/wordlists/rockyou.txt unshadowed.txt\
+john --wordlist=/usr/share/wordlists/rockyou.txt unshadowed.txt
 
 ### dirb
 dirb http://10.10.10.10/ \
