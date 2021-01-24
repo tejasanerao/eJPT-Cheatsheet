@@ -12,7 +12,7 @@ fping -a -g 10.10.10.0/24 > targets 2>/dev/null
 
 ## IP Route
 **Syntax**\
-*ip route add \<Network-range\> via \<router-IP\> dev \<interface\>\
+*ip route add \<Network-range\> via \<router-IP\> dev \<interface\>\*
 eg.\
 ip route add 172.16.50.0/24 via 10.13.37.1 dev tap0
 
