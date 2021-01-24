@@ -155,7 +155,7 @@ ftp 10.10.10.10
 
 ### Meterpreter
 
-ps_
+ps__
 getuid
 getpid
 getsystem
