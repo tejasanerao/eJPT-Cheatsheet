@@ -25,6 +25,8 @@ john --wordlist=/usr/share/wordlists/rockyou.txt unshadowed.txt
 dirb http://10.10.10.10/ \
 dirb http://10.10.10.10/dir -u admin:admin
 
+*I suggest you to use dirbuster for better speed. Keep the threads at 20. Use /usr/share/wordlists/dirb/common.txt wordlist.*
+
 ## Netcat
 **Listening for reverse shell**\
 nc -nvlp 1234
